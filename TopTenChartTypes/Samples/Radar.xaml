@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title = "Radar Chart"
+             x:Class="Sample.RadarChart">
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Some Radar data" TextColor="Blue">
+                <chart:ChartTitle.Font>
+                    <Font FontSize="18" FontAttributes="Bold"/>
+                </chart:ChartTitle.Font>
+            </chart:ChartTitle>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:CategoryAxis >
+                <chart:CategoryAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3"/>
+                </chart:CategoryAxis.AxisLineStyle>
+            </chart:CategoryAxis>
+            
+        </chart:SfChart.PrimaryAxis>
+        <chart:SfChart.SecondaryAxis >
+            <chart:NumericalAxis >
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:RadarSeries  x:Name="series2" DrawType="Line" 
+                                Color="Lime" Label="normal"
+                                XBindingPath ="Type" IsVisibleOnLegend="True" 
+                                YBindingPath="Other"/>
+            <chart:RadarSeries  x:Name="series1" DrawType="Line" 
+                                Color="Pink" Label="normal2"
+                                XBindingPath ="Type" IsVisibleOnLegend="True" 
+                                YBindingPath="AmountSpent"/>
+            <chart:RadarSeries  x:Name="series3" DrawType="Area"
+                                Color="Gray" Label="me"
+                                XBindingPath ="Type" IsVisibleOnLegend="True"
+                                YBindingPath="third"/>
+        </chart:SfChart.Series>
+        <chart:SfChart.Legend>
+            <chart:ChartLegend IsVisible="True"
+                         IsIconVisible="True"
+                         Orientation="Vertical"
+                         DockPosition="Top" />
+        </chart:SfChart.Legend>
+
+    </chart:SfChart>
+</ContentPage>

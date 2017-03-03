@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Sample;;assembly=Sample"
+             Title="TrackBall Template"
+             x:Class="Sample.TrackBallTemplate">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChartConverter x:Key="Converter" />
+            <DataTemplate x:Key="template">
+                <StackLayout Orientation="Horizontal" BackgroundColor="Maroon" Padding="10">
+                    <Image Source="{Binding Temperature, Converter = {StaticResource Converter}}" WidthRequest="40" HeightRequest="40"/>
+                    <StackLayout Orientation="Vertical" >
+                        <Label Text="{Binding Month}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="{Binding Temperature}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Weather Report"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:CategoryAxis>
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Months"/>
+                </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis>
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Temperature in celsius"/>
+                </chart:NumericalAxis.Title>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:SplineSeries x:Name="series1"
+                          XBindingPath = "Month"
+                          YBindingPath = "Temperature"
+                          TrackballLabelTemplate ="{StaticResource template}"/>
+        </chart:SfChart.Series>
+
+        <chart:SfChart.ChartBehaviors>
+            <chart:ChartTrackballBehavior/>
+        </chart:SfChart.ChartBehaviors>
+
+    </chart:SfChart>
+</ContentPage>

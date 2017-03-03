@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title = "Range Area Chart"
+             x:Class="Sample.RangeArea">
+
+    <chart:SfChart x:Name="sfchart" BackgroundColor="#FFAE42" >
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Charlie Brown" TextColor="Black">
+                <chart:ChartTitle.Font>
+                    <Font FontSize="18" FontAttributes="Bold"/>
+                </chart:ChartTitle.Font>
+            </chart:ChartTitle>
+        </chart:SfChart.Title>
+       
+
+        <chart:SfChart.PrimaryAxis  >
+            <chart:DateTimeAxis x:Name="primaryAxis"  >
+                <chart:DateTimeAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" ></chart:ChartLineStyle>
+                </chart:DateTimeAxis.AxisLineStyle>
+                <chart:DateTimeAxis.Title>
+                    <chart:ChartAxisTitle Text="Period" TextColor="Black"  >
+                        <chart:ChartAxisTitle.Font>
+                            <Font FontSize="14" FontAttributes="Bold"/>
+                        </chart:ChartAxisTitle.Font>
+                    </chart:ChartAxisTitle>
+                </chart:DateTimeAxis.Title>
+                <chart:DateTimeAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle  TextColor="Black" />
+                </chart:DateTimeAxis.LabelStyle>
+            </chart:DateTimeAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis Minimum="800" Maximum="900">
+                <chart:NumericalAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" ></chart:ChartLineStyle>
+                </chart:NumericalAxis.AxisLineStyle>
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Price" TextColor="Black" >
+                        <chart:ChartAxisTitle.Font>
+                            <Font FontSize="14" FontAttributes="Bold"/>
+                        </chart:ChartAxisTitle.Font>
+                    </chart:ChartAxisTitle>
+                </chart:NumericalAxis.Title>
+                <chart:NumericalAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle  TextColor="Black"  LabelFormat = "$##"/>
+                </chart:NumericalAxis.LabelStyle>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:RangeAreaSeries  x:Name="series1" Color="Black" 
+                          XBindingPath ="Date"  
+                          StrokeColor="Green" 
+                          High="High"
+                          Low="Low"
+                          EnableTooltip="true"/>
+        </chart:SfChart.Series>
+
+    </chart:SfChart>
+</ContentPage>

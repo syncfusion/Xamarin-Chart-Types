@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Sample;;assembly=Sample"
+             Title="Doughnut Series Customization"
+             x:Class="Sample.DoughnutSeriesCustomization">
+
+    <StackLayout>
+        <RelativeLayout x:Name="relativeLayout">
+            <chart:SfChart x:Name="sfchart" 
+                     HorizontalOptions="FillAndExpand" 
+                     VerticalOptions="FillAndExpand" 
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+                <chart:SfChart.Title>
+                    <chart:ChartTitle Text= "Expenditures">
+                        <chart:ChartTitle.Font>
+                            <Font FontSize="18" FontAttributes="Bold"/>
+                        </chart:ChartTitle.Font>
+                    </chart:ChartTitle>
+                </chart:SfChart.Title>
+
+                <chart:SfChart.PrimaryAxis >
+                    <chart:CategoryAxis/>
+                </chart:SfChart.PrimaryAxis>
+
+                <chart:SfChart.SecondaryAxis>
+                    <chart:NumericalAxis/>
+                </chart:SfChart.SecondaryAxis>
+
+                <chart:SfChart.Series>
+                    <chart:DoughnutSeries x:Name="series1"
+                                XBindingPath = "Type"
+                                YBindingPath = "AmountSpent"
+                                CircularCoefficient="0.6"
+                                DoughnutCoefficient="0.5"
+                                ConnectorLineType="Line"
+                                ExplodeOnTouch="true"
+                                EnableSmartLabels="true"
+                                ExplodeRadius="10"
+                                StartAngle="0"
+                                EndAngle="360"
+                                LegendIcon="Diamond"
+                                DataMarkerPosition="OutsideExtended">
+                        <chart:DoughnutSeries.DataMarker>
+                            <chart:ChartDataMarker ShowLabel="true" LabelContent="Percentage"/>
+                        </chart:DoughnutSeries.DataMarker>
+
+                        <chart:DoughnutSeries.ColorModel>
+                            <chart:ChartColorModel Palette="Custom" 
+                                                   CustomBrushes=
+                                                   "{Binding Source={local:ViewModel} Path=Colors}"/>
+                        </chart:DoughnutSeries.ColorModel>
+                    </chart:DoughnutSeries>
+                </chart:SfChart.Series>
+
+                <chart:SfChart.Legend>
+                    <chart:ChartLegend IsVisible="true"
+                             IsIconVisible="true"
+                             Orientation="Horizontal"
+                             DockPosition="Bottom"/>
+                </chart:SfChart.Legend>
+            </chart:SfChart>
+
+            <Label x:Name="label"/>
+        </RelativeLayout>
+
+    </StackLayout>
+</ContentPage>

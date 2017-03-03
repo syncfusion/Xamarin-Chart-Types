@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title = "100% Stacked Column Chart"
+             x:Class="Sample.Stack100Column">
+
+    <chart:SfChart x:Name="sfchart"  >
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Column stacking" TextColor="Black">
+                <chart:ChartTitle.Font>
+                    <Font FontSize="18" FontAttributes="Bold"/>
+                </chart:ChartTitle.Font>
+            </chart:ChartTitle>
+        </chart:SfChart.Title>
+       
+
+        <chart:SfChart.PrimaryAxis  >
+            <chart:DateTimeAxis x:Name="primaryAxis"  >
+                <chart:DateTimeAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                </chart:DateTimeAxis.AxisLineStyle>
+                <chart:DateTimeAxis.Title>
+                    <chart:ChartAxisTitle Text="Period" TextColor="Black"  >
+                        <chart:ChartAxisTitle.Font>
+                            <Font FontSize="14" FontAttributes="Bold"/>
+                        </chart:ChartAxisTitle.Font>
+                    </chart:ChartAxisTitle>
+                </chart:DateTimeAxis.Title>
+                <chart:DateTimeAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle  TextColor="Black" />
+                </chart:DateTimeAxis.LabelStyle>
+            </chart:DateTimeAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis>
+                <chart:NumericalAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Black" StrokeWidth="3" />
+                </chart:NumericalAxis.AxisLineStyle>
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Price" TextColor="Black" >
+                        <chart:ChartAxisTitle.Font>
+                            <Font FontSize="14" FontAttributes="Bold"/>
+                        </chart:ChartAxisTitle.Font>
+                    </chart:ChartAxisTitle>
+                </chart:NumericalAxis.Title>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:StackingColumn100Series   x:Name="series3" Color="Olive" 
+                          XBindingPath ="Date"  
+                          StrokeColor="Green" 
+                          YBindingPath ="High"
+                          EnableTooltip="true"/>
+            <chart:StackingColumn100Series  x:Name="series2" Color="#FFAE42" 
+                          XBindingPath ="Date"  
+                          StrokeColor="Green" 
+                          YBindingPath ="High"
+                          EnableTooltip="true"/>
+            <chart:StackingColumn100Series  x:Name="series1" Color="Black" 
+                          XBindingPath ="Date"  
+                          StrokeColor="Green" 
+                          YBindingPath="High"
+                          EnableTooltip="true"/>
+        </chart:SfChart.Series>
+
+    </chart:SfChart>
+</ContentPage>

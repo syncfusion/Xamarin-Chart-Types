@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Sample;;assembly=Sample"
+             Title="PieSeries Customization"
+             x:Class="Sample.PieSeriesCustomization">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="template">
+                <StackLayout Orientation="Horizontal" 
+                             BackgroundColor="Maroon" VerticalOptions="FillAndExpand" 
+                             HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Type}" TextColor="White" 
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text=":" TextColor="White" VerticalOptions="Center" 
+                           HorizontalOptions="Center" />
+                    <Label Text="{Binding AmountSpent}" TextColor="White" 
+                           VerticalOptions="Center" HorizontalOptions="Center" />
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Expenditures">
+                <chart:ChartTitle.Font>
+                    <Font FontSize="18" FontAttributes="Bold"/>
+                </chart:ChartTitle.Font>
+            </chart:ChartTitle>
+        </chart:SfChart.Title>
+      
+        <chart:SfChart.Series>
+            <chart:PieSeries x:Name="series1"
+                       XBindingPath = "Type"
+                       YBindingPath = "AmountSpent"
+                       CircularCoefficient="0.7"
+                       ConnectorLineType="Bezier"
+                       EnableTooltip ="true"
+                       TooltipTemplate ="{StaticResource template}"
+                       ExplodeOnTouch="True"
+                       EnableSmartLabels="True"
+                       ExplodeRadius="10"
+                       StartAngle="180"
+                       EndAngle="360"
+                       LegendIcon="Circle"
+                       DataMarkerPosition="OutsideExtended">
+                <chart:PieSeries.DataMarker>
+                    <chart:ChartDataMarker ShowLabel="True" LabelContent="Percentage"/>
+                </chart:PieSeries.DataMarker>
+            </chart:PieSeries>
+        </chart:SfChart.Series>
+
+        <chart:SfChart.Legend>
+            <chart:ChartLegend IsVisible="True"
+                         IsIconVisible="True"
+                         Orientation="Vertical"
+                         DockPosition="Right"/>
+        </chart:SfChart.Legend>
+
+        <chart:SfChart.ChartBehaviors>
+            <chart:ChartTooltipBehavior BackgroundColor="Maroon"/>
+        </chart:SfChart.ChartBehaviors>
+
+    </chart:SfChart>
+</ContentPage>

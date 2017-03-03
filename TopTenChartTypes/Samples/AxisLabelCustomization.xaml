@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title = "Axis Label Customization"
+             x:Class="Sample.AxisLabelCustomization">
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Weather Report"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:CategoryAxis x:Name="primaryAxis"
+                          LabelRotationAngle="300"
+                          LabelPlacement="BetweenTicks">
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Months"/>
+                </chart:CategoryAxis.Title>
+
+                <chart:CategoryAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle TextColor="Maroon">
+                        <chart:ChartAxisLabelStyle.Font>
+                            <Font FontSize="11" FontAttributes="Italic"/>
+                        </chart:ChartAxisLabelStyle.Font>
+                    </chart:ChartAxisLabelStyle>
+                </chart:CategoryAxis.LabelStyle>
+            </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis Minimum="10" Interval="5.5">
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Temperature in celsius"/>
+                </chart:NumericalAxis.Title>
+
+                <chart:NumericalAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle TextColor="Maroon" LabelFormat="0.0">
+                        <chart:ChartAxisLabelStyle.Font>
+                            <Font FontSize="11" FontAttributes="Bold"/>
+                        </chart:ChartAxisLabelStyle.Font>
+                    </chart:ChartAxisLabelStyle>
+                </chart:NumericalAxis.LabelStyle>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:SplineSeries x:Name="series1" Label="Series 1"
+                          XBindingPath = "Month"
+                          YBindingPath = "Temperature"/>
+            <chart:SplineSeries x:Name="series2" Label="Series 2"
+                          XBindingPath = "Month"
+                          YBindingPath = "temp2"/>
+        </chart:SfChart.Series>
+        <chart:SfChart.Legend>
+            <chart:ChartLegend ToggleSeriesVisibility="True" />
+        </chart:SfChart.Legend>
+    </chart:SfChart>
+</ContentPage>

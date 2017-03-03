@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Sample;;assembly=Sample"
+             Title="Basic columns"
+             x:Class="Sample.DataMarkerTemplate">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:DatamarkerConverter x:Key="Converter" />
+            <DataTemplate x:Key="labelTemplate">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Temperature}" TextColor="Green" VerticalOptions="Center" HorizontalOptions="End" />
+                    <Label Text="°C" TextColor="Maroon" VerticalOptions="Center" HorizontalOptions="Start" />
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Weather Report"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:CategoryAxis>
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Months"/>
+                </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis Maximum="90">
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Temperature in celsius"/>
+                </chart:NumericalAxis.Title>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:ColumnSeries x:Name="series1" XBindingPath = "Month" YBindingPath = "Temperature">
+                <chart:ColumnSeries.DataMarker>
+                    <chart:ChartDataMarker ShowLabel="True" LabelTemplate="{StaticResource labelTemplate}"/>
+                </chart:ColumnSeries.DataMarker>
+            </chart:ColumnSeries>
+        </chart:SfChart.Series>
+
+    </chart:SfChart>
+</ContentPage>

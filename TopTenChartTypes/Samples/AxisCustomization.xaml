@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Sample.AxisCustomization"
+             Title="Axis Customization">
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Weather Report"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:DateTimeAxis x:Name="primaryAxis"
+                          EdgeLabelsDrawingMode="Shift" 
+                          IsInversed="true" 
+                          AutoScrollingDelta="5" 
+                          EnableAutoIntervalOnZooming="true" 
+                          ZoomFactor="0.5"
+                          ZoomPosition="0.5"
+                          LabelExtent="50"
+                          AutoScrollingDeltaType="Days">
+                <chart:DateTimeAxis.Title>
+                    <chart:ChartAxisTitle Text="Months"/>
+                </chart:DateTimeAxis.Title>
+
+                <chart:DateTimeAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeWidth="3"/>
+                </chart:DateTimeAxis.AxisLineStyle>
+
+                <chart:DateTimeAxis.MajorGridLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Maroon"/>
+                </chart:DateTimeAxis.MajorGridLineStyle>
+
+                <chart:DateTimeAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle  BorderColor="Black" Margin="5"
+                                                BorderThickness="4" 
+                                               LabelFormat="dd/MM/yyyy"/>
+                </chart:DateTimeAxis.LabelStyle>
+            </chart:DateTimeAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis Maximum="100" OpposedPosition="true" >
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Temperature in celsius"/>
+                </chart:NumericalAxis.Title>
+
+                <chart:NumericalAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeWidth="3"/>
+                </chart:NumericalAxis.AxisLineStyle>
+
+                <chart:NumericalAxis.MajorGridLineStyle>
+                    <chart:ChartLineStyle StrokeColor="Maroon"/>
+                </chart:NumericalAxis.MajorGridLineStyle>
+
+                <chart:NumericalAxis.StripLines>
+                    <chart:NumericalStripLine Start="0" Width="45" Text="Low Temperature" FillColor="#C8D16D"/>
+                    <chart:NumericalStripLine Start="45" Width="35" Text="Average Temperature" FillColor="#F4C762"/>
+                    <chart:NumericalStripLine Start="75" Width="25" Text="High Temperature" FillColor="#EF7878"/>
+                </chart:NumericalAxis.StripLines>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:SplineSeries x:Name="series1"
+                          XBindingPath = "Date"
+                          YBindingPath = "Temperature"
+                          Color="Black"/>
+        </chart:SfChart.Series>
+
+        <chart:SfChart.ChartBehaviors>
+            <chart:ChartZoomPanBehavior EnableSelectionZooming="true"/>
+        </chart:SfChart.ChartBehaviors>
+
+        <chart:SfChart.Legend>
+            
+        </chart:SfChart.Legend>
+
+    </chart:SfChart>
+
+</ContentPage>

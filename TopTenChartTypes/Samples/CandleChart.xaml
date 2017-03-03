@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title = "Candle Chart"
+             x:Class="Sample.CandleChart">
+    <StackLayout Orientation="Vertical">
+        <Button x:Name="button"
+            Text="Save As Image"
+            Clicked="OnButtonClick"/>
+        <chart:SfChart x:Name="sfchart" HorizontalOptions="Center" 
+                       VerticalOptions="Center" WidthRequest="400" HeightRequest="450">
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text= "Financial Analysis" TextColor="Blue">
+                    <chart:ChartTitle.Font>
+                        <Font FontSize="18" FontAttributes="Bold"/>
+                    </chart:ChartTitle.Font>
+                </chart:ChartTitle>
+            </chart:SfChart.Title>
+
+            <chart:SfChart.PrimaryAxis >
+                <chart:DateTimeAxis x:Name="primaryAxis" IsInversed="True" >
+                    <chart:DateTimeAxis.Title>
+                        <chart:ChartAxisTitle Text="Period" TextColor="Green">
+                            <chart:ChartAxisTitle.Font>
+                                <Font FontSize="12" FontAttributes="Bold"/>
+                            </chart:ChartAxisTitle.Font>
+                        </chart:ChartAxisTitle>
+                    </chart:DateTimeAxis.Title>
+
+                    <chart:DateTimeAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="Maroon"/>
+                    </chart:DateTimeAxis.LabelStyle>
+                </chart:DateTimeAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Minimum="830">
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Price" TextColor="Green">
+                            <chart:ChartAxisTitle.Font>
+                                <Font FontSize="12" FontAttributes="Bold"/>
+                            </chart:ChartAxisTitle.Font>
+                        </chart:ChartAxisTitle>
+                    </chart:NumericalAxis.Title>
+
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="Maroon" LabelFormat = "$##.##"/>
+                    </chart:NumericalAxis.LabelStyle>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:SfChart.Series>
+                <chart:CandleSeries x:Name="series1"
+                          XBindingPath ="Date"
+                          IsTransposed="True"  
+                          BullFillColor="Green" 
+                          BearFillColor="Red"
+                          High="High"
+                          Low="Low"
+                          Open="Open"
+                          Close="Close"
+                          EnableTooltip="true"/>
+            </chart:SfChart.Series>
+
+        </chart:SfChart>
+    </StackLayout>
+</ContentPage>

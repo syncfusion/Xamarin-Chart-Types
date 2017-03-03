@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Sample;;assembly=Sample"
+             Title="Save As Image"
+             x:Class="Sample.SaveAsImage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Orientation="Vertical">
+        <Button x:Name="button"
+            Text="Save As Image"
+            Clicked="OnButtonClick"/>
+
+        <chart:SfChart x:Name="sfchart" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="400" HeightRequest="450">
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text= "Weather Report"/>
+            </chart:SfChart.Title>
+
+            <chart:SfChart.PrimaryAxis >
+                <chart:CategoryAxis>
+                    <chart:CategoryAxis.Title>
+                        <chart:ChartAxisTitle Text="Months"/>
+                    </chart:CategoryAxis.Title>
+                </chart:CategoryAxis>
+            </chart:SfChart.PrimaryAxis>
+
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis Maximum="100">
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Temperature in celsius"/>
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfChart.SecondaryAxis>
+
+            <chart:SfChart.Series>
+                <chart:ColumnSeries x:Name="cSeries"
+                            ItemsSource="{Binding Values}"/>
+            </chart:SfChart.Series>
+        </chart:SfChart>
+
+    </StackLayout>
+</ContentPage>

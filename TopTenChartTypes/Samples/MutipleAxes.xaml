@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:local="clr-namespace:Sample;;assembly=Sample"
+             Title="Multiple Axes"
+             x:Class="Sample.MultipleAxes">
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Revenue of Company"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:CategoryAxis>
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Year"/>
+                </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis >
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Revenue(in millions)"/>
+                </chart:NumericalAxis.Title>
+
+                <chart:NumericalAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle LabelFormat="$##"/>
+                </chart:NumericalAxis.LabelStyle>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:ColumnSeries x:Name="series1" 
+                                XBindingPath="Year" YBindingPath="Production" Label="Revenue" EnableTooltip ="true"/>
+            <chart:SplineSeries x:Name="series2" Color="Red" 
+                                XBindingPath="Year" YBindingPath="Production" Label="Customers" EnableTooltip ="true">
+                <chart:SplineSeries.YAxis>
+                    <chart:NumericalAxis  ShowMajorGridLines = "false"  
+                                          OpposedPosition="true">
+                        <chart:NumericalAxis.Title>
+                            <chart:ChartAxisTitle Text ="Number of Customers"/>
+                        </chart:NumericalAxis.Title>
+                    </chart:NumericalAxis>
+                </chart:SplineSeries.YAxis>
+            </chart:SplineSeries>
+        </chart:SfChart.Series>
+
+        <chart:SfChart.Legend>
+            <chart:ChartLegend ToggleSeriesVisibility = "true"/>
+        </chart:SfChart.Legend>
+
+    </chart:SfChart>
+</ContentPage>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             Title="TrackBall Label Customization"
+             x:Class="Sample.TrackBallLabelCustomization">
+
+    <chart:SfChart x:Name="sfchart">
+        <chart:SfChart.Title>
+            <chart:ChartTitle Text= "Weather Report"/>
+        </chart:SfChart.Title>
+
+        <chart:SfChart.PrimaryAxis >
+            <chart:CategoryAxis>
+                <chart:CategoryAxis.Title>
+                    <chart:ChartAxisTitle Text="Months"/>
+                </chart:CategoryAxis.Title>
+            </chart:CategoryAxis>
+        </chart:SfChart.PrimaryAxis>
+
+        <chart:SfChart.SecondaryAxis>
+            <chart:NumericalAxis Maximum="80">
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Temperature in celsius"/>
+                </chart:NumericalAxis.Title>
+            </chart:NumericalAxis>
+        </chart:SfChart.SecondaryAxis>
+
+        <chart:SfChart.Series>
+            <chart:ColumnSeries x:Name="series1"
+                          XBindingPath = "Month"
+                          YBindingPath = "Temperature"/>
+        </chart:SfChart.Series>
+
+        <chart:SfChart.ChartBehaviors>
+            <chart:ChartTrackballBehavior>
+                <chart:ChartTrackballBehavior.LabelStyle>
+                    <chart:ChartTrackballLabelStyle TextColor="Blue" 
+                                                    BackgroundColor="Aqua" 
+                                                    BorderColor="Blue" 
+                                                    BorderThickness="3">
+                        <chart:ChartTrackballLabelStyle.Font>
+                            <Font FontSize="15"/>
+                        </chart:ChartTrackballLabelStyle.Font>
+                    </chart:ChartTrackballLabelStyle>
+                </chart:ChartTrackballBehavior.LabelStyle>
+            </chart:ChartTrackballBehavior>
+        </chart:SfChart.ChartBehaviors>
+
+    </chart:SfChart>
+</ContentPage>
